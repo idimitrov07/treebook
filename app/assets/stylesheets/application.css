@@ -14,3 +14,9 @@
  body {
  	padding-top: 40px;
  }
+
+ .row .span5 .well #passInfo {
+ 	color: #f89406;
+ }
+
+ 
