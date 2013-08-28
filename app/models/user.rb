@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
                              message: 'Must be formatted correctly!'
                            }
 
-  has_many :statuses
+  has_many :statuses, :order => "created_at DESC" #updated to show latest statuses first
 
   def full_name
   	first_name + " " + last_name
