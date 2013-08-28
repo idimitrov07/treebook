@@ -4,3 +4,9 @@ jason:
   email: "jasonw@abv.bg"
   profile_name: "jasonw"
   
+
+jim:
+  first_name: "Jim"
+  last_name: "Hoskins"
+  email: "jim@treehouse.com"
+  profile_name: "jimhoskins"

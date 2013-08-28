@@ -12,4 +12,17 @@ class ProfilesControllerTest < ActionController::TestCase
   	assert_response :not_found
   end
 
+  test "that variables are assigned on successful profile viewing" do
+  	get :show, id: users(:jason).profile_name
+  	assert assigns(:user)
+  	assert_not_empty assigns(:statuses)
+  end
+
+  test "that only the correct statuses are shown" do
+  	get :show, id: users(:jason).profile_name
+  	assigns(:statuses).each do |status|
+  	  assert_equal users(:jason), status.user	
+  	end
+  end
+
 end
