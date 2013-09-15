@@ -8,6 +8,8 @@ gem 'rails', '3.2.13'
 
 gem 'devise'
 gem 'simple_form'
+gem 'rails_12factor'
+gem 'ruby', '2.0.0'
 
 group :test do
 	gem 'shoulda'
