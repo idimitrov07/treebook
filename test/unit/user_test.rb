@@ -66,4 +66,8 @@ class UserTest < ActiveSupport::TestCase
         UserFriendship.create user_id: users(:jason).id, friend_id: users(:mike).id
         assert users(:jason).friends.include?(users(:mike))
     end
+
+    test "that calling to_param shows the profile_name" do
+        assert_equal "jasonw", users(:jason).to_param
+    end
 end
