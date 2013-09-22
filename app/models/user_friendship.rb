@@ -2,12 +2,39 @@ class UserFriendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
-  attr_accessible :user, :friend, :user_id, :friend_id
+  #add :state to the column, so we can mass-assign the attr (not so secure method)
+  attr_accessible :user, :friend, :user_id, :friend_id, :state
 
   state_machine :state, initial: :pending do
+  	after_transition on: :accept, do: :send_acceptance_email
+
+  	#add the requested state, because it doesn't get created
+  	state :requested
+
+  	event :accept do
+  	  transition any => :accepted
+  	end
+  end
+
+  #this is a class method, using self keyword
+  def self.request(user1, user2) 
+  	#to keep alert for a mistake during friendship creation we use a transaction
+  	transaction do
+  	  friendship1 = create!(user: user1, friend: user2, state: 'pending')
+  	  friendship2 = create!(user: user2, friend: user1, state: 'requested')
+
+  	  #send email
+  	  friendship1.send_request_email
+  	  friendship1
+    end
   end
 
   def send_request_email
  	UserNotifier.friend_requested(id).deliver
   end
+
+  def send_acceptance_email
+  	UserNotifier.friend_request_accepted(id).deliver
+  end
+
 end
