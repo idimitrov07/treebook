@@ -3,12 +3,12 @@ Treebook::Application.routes.draw do
 
 
   as :user do
-    get '/register', to: 'devise/registrations#new', as: :register
-    get '/login', to: 'devise/sessions#new', as: :login
-    get '/logout', to: 'devise/sessions#destroy', as: :logout
+    get '/register', to: 'devise/registrations#new',via: :get, as: :register
+    get '/login', to: 'devise/sessions#new',via: :get, as: :login
+    get '/logout', to: 'devise/sessions#destroy',via: :get, as: :logout
   end
 
-  devise_for :users #, skip: [:session]
+  devise_for :users #, :skip => [:sessions]
 
   as :user do
     get "/login" => 'devise/sessions#new', as: :new_user_session

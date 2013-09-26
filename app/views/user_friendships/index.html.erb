@@ -2,7 +2,7 @@
 	<h1>Friends</h1>
 </div>
 
-<%= @user_friendships.each do |friendship| %>
+<% @user_friendships.each do |friendship| %>
 	<% friend = friendship.friend %>
 	<div id="<%= dom_id(friendship) %>" class="friend row">
 		<div class="span1">
