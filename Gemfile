@@ -10,6 +10,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'rails_12factor'
 gem 'state_machine'
+gem 'draper'
+gem 'js-routes'
 
 
 group :test do
