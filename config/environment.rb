@@ -6,8 +6,8 @@ Treebook::Application.initialize!
 
 ActionMailer::Base.smtp_settings = {
   :user_name => 'app18140881@heroku.com',
-  :password => 'Your Password',
-  :domain => 'beachbar.herokuapp.com',
+  :password => '444cl1r9',
+  :domain => 'heroku.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
