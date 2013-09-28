@@ -32,7 +32,7 @@ class UserFriendship < ActiveRecord::Base
   end
 
   def send_request_email
- 	UserNotifier.friend_requested(id).deliver
+ 	  UserNotifier.friend_requested(id).deliver
   end
 
   def send_acceptance_email
