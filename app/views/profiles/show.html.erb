@@ -1,13 +1,21 @@
 <div class="page-header">
 	<h1><%= @user.full_name %></h1>
+	<div class="row">
+		<div class="avatar span2">
+			<%= image_tag @user.gravatar_url %>
+		</div>
+	</div>
 </div>
-
-<% if signed_in? && current_user != @user %>
+<% if signed_in? %>
 	<div id="friend-status">
 		<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
 			<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
 		<% else %>
-			<%= link_to "Add friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param} %>
+			<% if current_user != @user %>
+				<%= link_to "Add friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param} %>
+			<% else %>
+				<h3>My Statuses</h3>
+			<% end %>
 		<% end %>
 
 	</div>
