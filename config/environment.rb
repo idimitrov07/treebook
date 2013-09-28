@@ -5,7 +5,7 @@ require File.expand_path('../application', __FILE__)
 Treebook::Application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => 'idimitrov07',
+  :user_name => 'app18140881@heroku.com',
   :password => 'q11w22e33r44',
   :domain => 'beachbar.herokuapp.com',
   :address => 'smtp.sendgrid.net',
@@ -13,3 +13,5 @@ ActionMailer::Base.smtp_settings = {
   :authentication => :plain,
   :enable_starttls_auto => true
 }
+
+#config.action_mailer.delivery_method = :smtp
