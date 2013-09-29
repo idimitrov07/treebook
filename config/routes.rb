@@ -23,7 +23,7 @@ Treebook::Application.routes.draw do
     end
   end
 
-  resources :passwords
+  #resources :passwords
 
   resources :statuses
   get 'feed', to: 'statuses#index', as: :feed
