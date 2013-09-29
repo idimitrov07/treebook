@@ -10,7 +10,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'rails_12factor'
 gem 'state_machine'
-gem 'draper'
+gem 'draper', '~> 1.0'
 gem 'js-routes'
 
 

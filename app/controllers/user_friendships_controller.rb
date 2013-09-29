@@ -3,8 +3,8 @@ class UserFriendshipsController < ApplicationController
 	respond_to :html, :json
 
 	def index
-      @user_friendships = current_user.user_friendships.all
-      respond_with @user_friendships
+		@user_friendships = UserFriendshipDecorator.decorate_collection(friendship_accociation.all)
+     	respond_with @user_friendships
 	end
 
 	def new
@@ -56,6 +56,16 @@ class UserFriendshipsController < ApplicationController
 		redirect_to user_friendships_path
 	end
 
+	def block
+		@user_friendship = current_user.user_friendships.find(params[:id])
+		if @user_friendship.block! 
+			flash[:success] = "You have blocked #{@user_friendship.friend.first_name}."
+		else
+			flash[:error] = "That friendship could not be blocked." 
+		end
+		redirect_to user_friendships_path
+	end
+
 	def edit
 		@friend = User.where(profile_name: params[:id]).first
 		@user_friendship = current_user.user_friendships.where(friend_id: @friend.id).first.decorate
@@ -68,4 +78,23 @@ class UserFriendshipsController < ApplicationController
 		end
 		redirect_to user_friendships_path
 	end
+
+	
+
+	private
+	def friendship_accociation 
+		case params[:list]
+		when nil
+     		current_user.user_friendships
+     	when 'blocked'
+     		current_user.blocked_user_friendships
+     	when 'pending'
+     		current_user.pending_user_friendships
+     	when 'accepted'
+     		current_user.accepted_user_friendships
+     	when 'requested'
+     		current_user.requested_user_friendships
+     	end
+	end
+
 end
