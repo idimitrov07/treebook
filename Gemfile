@@ -14,6 +14,7 @@ gem 'draper', '~> 1.0'
 gem 'js-routes'
 
 
+
 group :test do
 	gem 'shoulda'
 	gem 'factory_girl_rails'

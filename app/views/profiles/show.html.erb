@@ -1,32 +1,35 @@
-<div class="page-header">
-	<h1><%= @user.full_name %></h1>
-	<div class="row">
-		<div class="avatar span2">
-			<%= image_tag @user.gravatar_url, class: 'img-polaroid' %>
-		</div>
-	</div>
-</div>
-<% if signed_in? %>
-	<div id="friend-status">
-		<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-			<%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
-		<% else %>
-			<% if current_user != @user %>
-				<%= link_to "Add friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param} %>
-			<% else %>
-				<h3>My Statuses</h3>
-			<% end %>
-		<% end %>
-
-	</div>
+<%= page_header do %>
+  <h1>
+    <%= avatar_profile_link @user, {}, class: '' %>
+    <%= @user.full_name %>
+  </h1>
 <% end %>
 
+<% if signed_in? %>
+<div id="friend-status">
+  <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+    <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
+  <% else %>
+  	<% if current_user != @user %>
+    	<%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+    <% else %>
+    	<h2>My Statuses</h2>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
+
+<br />
+
 <% if @statuses %>
+	<% if current_user != @user %>
+  		<h3><%= @user.first_name %>'s status updates:</h3>
+ 	<% end %>
   <% @statuses.each do |status| %>
-  	<div class="well">
-  		<%= status.content %>
-  		<hr />
-  		<%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
-  	</div>
+    <div class="well">
+      <%= status.content %>
+      <hr />
+      <%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
+    </div>
   <% end %>
 <% end %>

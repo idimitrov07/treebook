@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= f.input :content %>
+  <%= f.input :content, input_html: { rows: 4, class: 'input-xxlarge' } %>
   <div class="form-actions">
     <%= f.button :submit, :class => "btn-info"  %>
   </div>

@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
 
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
+  
   def full_name
   	first_name + " " + last_name
   end

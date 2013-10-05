@@ -3,8 +3,8 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.all(:order => "created_at DESC") #edited to show latest statuses first
 
+    @statuses = Status.all(:order => "created_at DESC") #edited to show latest statuses first 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @statuses }
