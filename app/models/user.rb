@@ -21,9 +21,9 @@ class User < ActiveRecord::Base
                              message: 'Must be formatted correctly!'
                            }
 
-  has_many :statuses, :order => "created_at DESC" #updated to show latest statuses first
-  has_many :user_friendships
-  has_many :friends, through: :user_friendships,
+  has_many :statuses, :dependent => :destroy, :order => "created_at DESC" #updated to show latest statuses first
+  has_many :user_friendships, :dependent => :destroy
+  has_many :friends, :dependent => :destroy, through: :user_friendships,
                      conditions: { user_friendships: { state: 'accepted'} }
 
   has_many :pending_user_friendships, class_name: 'UserFriendship', 
