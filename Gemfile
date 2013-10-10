@@ -15,9 +15,8 @@ gem 'js-routes'
 gem 'paperclip'
 
 
-group :development do
-	gem 'thin'
-end
+gem 'thin'
+
 
 group :test do
 	gem 'shoulda'
