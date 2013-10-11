@@ -1,6 +1,6 @@
-Social Networ Project - Treebook - based on Treehouse Rails courses. 
+<strong>Social Network Project - Treebook - based on Treehouse Rails courses. 
 Using Runy on Rails. Added different pludings for file uploads and others. 
-Still in progress. 
+Still in progress.</strong> 
 http://teamtreehouse.com
 
 
