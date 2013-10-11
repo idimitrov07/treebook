@@ -1,3 +1,10 @@
+Social Networ Project - Treebook - based on Treehouse Rails courses. 
+Using Runy on Rails. Added different pludings for file uploads and others. 
+Still in progress. 
+http://teamtreehouse.com
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
