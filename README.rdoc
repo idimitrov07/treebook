@@ -1,5 +1,5 @@
 == Social Network Project - Treebook - based on Treehouse Rails courses. 
-Using Runy on Rails. Added different pludings for file uploads and others. 
+Using Ruby on Rails. Added different plugins for file uploads and others. 
 Still in progress.
 http://teamtreehouse.com
 
