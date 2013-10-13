@@ -27,6 +27,9 @@
  	<% end %>
   <% @statuses.each do |status| %>
     <div class="well">
+      <% if status.document && status.document.attachment? %>
+        <%= image_tag status.document.attachment.url(:small) %>
+      <% end %>
       <%= status.content %>
       <hr />
       <%= link_to time_ago_in_words(status.created_at), status_path(status) %> ago
