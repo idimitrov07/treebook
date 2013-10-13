@@ -19,10 +19,9 @@
       <div class="control-group">
           <label class="control-label">Current Avatar</label>
           <div class="controls">
-            <%= image_tag f.object.avatar.url, class: "span2 thumbnail" %>
+            <%= image_tag f.object.avatar.url(:small) %>
           </div>
         </div>
-    
     <% end %>
   </fieldset>
 
