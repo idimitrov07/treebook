@@ -15,6 +15,7 @@ gem 'js-routes'
 gem 'paperclip'
 
 gem 'newrelic_rpm'
+gem 'aws-sdk'
 
 
 

@@ -60,6 +60,14 @@ Treebook::Application.configure do
   
   # Enable threaded mode
   # config.threadsafe!
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['treebook'],
+      :access_key_id => ENV['AKIAJKYPJW24MP7S4MWQ'],
+      :secret_access_key => ENV['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']
+    }
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
