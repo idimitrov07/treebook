@@ -15,7 +15,7 @@ Treebook::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -62,8 +62,9 @@ Treebook::Application.configure do
   # config.threadsafe!
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_protocol => 'http',
+    :bucket => ENV['treebook'],
     :s3_credentials => {
-      :bucket => ENV['treebook'],
       :access_key_id => ENV['AKIAJKYPJW24MP7S4MWQ'],
       :secret_access_key => ENV['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']
     }
