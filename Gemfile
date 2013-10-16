@@ -14,6 +14,8 @@ gem 'draper', '~> 1.0'
 gem 'js-routes'
 gem 'paperclip'
 
+gem 'newrelic_rpm'
+
 
 
 gem 'thin'
