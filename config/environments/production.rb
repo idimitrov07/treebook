@@ -60,16 +60,7 @@ Treebook::Application.configure do
   
   # Enable threaded mode
   # config.threadsafe!
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_protocol => 'http',
-    :bucket => ENV['treebook'],
-    :s3_credentials => {
-      :access_key_id => ENV['AKIAJKYPJW24MP7S4MWQ'],
-      :secret_access_key => ENV['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']
-    }
-  }
-
+  
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
@@ -80,4 +71,13 @@ Treebook::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "treebook",
+      :access_key_id => "AKIAJKYPJW24MP7S4MWQ",
+      :secret_access_key => "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"
+    }
+  }
 end
