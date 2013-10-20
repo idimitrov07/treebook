@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 
 gem 'devise'
 gem 'simple_form'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem 'js-routes'
