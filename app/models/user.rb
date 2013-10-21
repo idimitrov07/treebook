@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
                              message: 'Must be formatted correctly!'
                            }
 
+  has_many :albums, :dependent => :destroy
+  has_many :pictures, :dependent => :destroy
   has_many :statuses, :dependent => :destroy, :order => "created_at DESC" #updated to show latest statuses first
   has_many :user_friendships, :dependent => :destroy
   has_many :friends, :dependent => :destroy, through: :user_friendships,
