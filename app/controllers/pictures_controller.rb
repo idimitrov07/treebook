@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :edit, :update, :new, :destroy]
   before_filter :find_user
   before_filter :find_album 
+  before_filter :find_picture, only: [:edit, :update, :show, :destroy]
   # GET /pictures
   # GET /pictures.json
   def index
@@ -16,8 +17,6 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
-    @picture = Picture.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @picture }
@@ -37,17 +36,18 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
-    @picture = Picture.find(params[:id])
+   
   end
 
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(params[:picture])
+    @picture = @album.pictures.new(params[:picture])
+    @picture.user = current_user
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to album_pictures_path(@album), notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
       else
         format.html { render action: "new" }
@@ -59,7 +59,6 @@ class PicturesController < ApplicationController
   # PUT /pictures/1
   # PUT /pictures/1.json
   def update
-    @picture = Picture.find(params[:id])
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
@@ -75,7 +74,7 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1
   # DELETE /pictures/1.json
   def destroy
-    @picture = Picture.find(params[:id])
+
     @picture.destroy
 
     respond_to do |format|
@@ -98,7 +97,7 @@ class PicturesController < ApplicationController
       @album = current_user.albums.find(params[:album_id])
     else
       @album = @user.albums.find(params[:album_id])
-    end 
+    end
   end
 
   def find_picture

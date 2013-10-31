@@ -2,6 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+  	<%= f.input :asset, as: :file %>
     <%= f.input :caption, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :description, input_html: { class: 'input-xxlarge' } %>
   </div>
