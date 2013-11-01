@@ -7,7 +7,7 @@
 
 <ul class="thumbnails">
 <% @pictures.each do |picture| %>
-  <li>
+  <li class="span3">
     <div class="thumbnail">
     <%= link_to image_tag(picture.asset.url(:small)), album_picture_path(@user, @album, picture) %><br />
       <div class="caption">

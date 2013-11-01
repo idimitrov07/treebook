@@ -5,8 +5,12 @@
   </h1>
 <% end %>
 
+<% if @user.albums.count > 0 %>
+  <%= link_to "Albums", albums_path(@user), class: 'btn' %>
+<% end %>
+
 <% if signed_in? %>
-<div id="friend-status">
+<span id="friend-status">
   <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
     <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn' %>
   <% else %>
@@ -16,7 +20,7 @@
     	<h2>My Statuses</h2>
     <% end %>
   <% end %>
-</div>
+</span>
 <% end %>
 
 <br />
