@@ -17,6 +17,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    @picture = Picture.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @picture }
@@ -26,7 +27,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @picture = Picture.new
+     @picture = @album.pictures.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,10 +60,10 @@ class PicturesController < ApplicationController
   # PUT /pictures/1
   # PUT /pictures/1.json
   def update
-
+    @picture = Picture.find(params[:id])
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to album_pictures_path(@album), notice: 'Picture was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -74,16 +75,16 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1
   # DELETE /pictures/1.json
   def destroy
-
+    @picture = Picture.find(params[:id])
     @picture.destroy
 
     respond_to do |format|
-      format.html { redirect_to pictures_url }
+      format.html { redirect_to album_pictures_url(@album) }
       format.json { head :no_content }
     end
   end
 
-  def url_oprions
+  def url_options
     { profile_name: params[:profile_name] }.merge(super)
   end
 
@@ -93,7 +94,7 @@ class PicturesController < ApplicationController
   end
 
   def find_album  
-    if signed_in? && current_user.profile_name == params[:profile_name]
+    if signed_in? 
       @album = current_user.albums.find(params[:album_id])
     else
       @album = @user.albums.find(params[:album_id])
@@ -101,6 +102,6 @@ class PicturesController < ApplicationController
   end
 
   def find_picture
-    @picture = @album.pictures.find(params[:picture_id])
+    @picture = @album.pictures.find(params[:id])
   end
 end
