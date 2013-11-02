@@ -56,6 +56,13 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
+  test "should create an activity item for the status when logged in" do
+    sign_in users(:jason)
+    assert_difference('Activity.count') do
+      post :create, status: { content: @status.content }
+    end
+  end
+
   test "should create status for the current user when logged in" do
     sign_in users(:jason)
 
