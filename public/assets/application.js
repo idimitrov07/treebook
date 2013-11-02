@@ -10447,6 +10447,10 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
   accept_user_friendship_path: function(_id, options) {
   return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"user_friendships",false]],[7,"/",false]],[3,"id",false]],[7,"/",false]],[6,"accept",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
+// activities => /activities(.:format)
+  activities_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"activities",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
 // album => /:profile_name/albums/:id(.:format)
   album_path: function(_profile_name, _id, options) {
   return Utils.build_path(["profile_name","id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[3,"profile_name",false]],[7,"/",false]],[6,"albums",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
@@ -10586,6 +10590,10 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 ;
 
   window.Routes.options = defaults;
+
+}).call(this);
+(function() {
+
 
 }).call(this);
 (function() {
