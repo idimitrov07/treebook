@@ -35,6 +35,8 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.1)
     bcrypt-ruby (3.1.1-x86-mingw32)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     builder (3.0.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -166,12 +168,14 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
 
 PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
   aws-sdk
+  bootstrap-will_paginate
   coffee-rails (~> 3.2.1)
   devise
   draper (~> 1.0)
@@ -192,3 +196,4 @@ DEPENDENCIES
   thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  will_paginate

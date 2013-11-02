@@ -32,7 +32,9 @@
   <% @statuses.each do |status| %>
     <div class="well">
       <% if status.document && status.document.attachment? %>
-        <%= image_tag status.document.attachment.url(:small) %>
+        
+        <%=  image_tag(status.document.attachment.url(:small)) %>
+      
       <% end %>
       <%= status.content %>
       <hr />
