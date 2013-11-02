@@ -103,6 +103,13 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to status_path(assigns(:status))
   end
 
+  test "should create an activity item when the status is updated" do
+    sign_in users(:jason)
+    assert_difference 'Activity.count' do
+      put :update, id: @status, status: { content: @status.content }
+    end
+  end
+
   test "should update status for the current use when logged in" do
     sign_in users(:jason)
     put :update, id: @status, status: { content: @status.content, user_id: users(:jim).id }
