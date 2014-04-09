@@ -76,9 +76,9 @@ Treebook::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => "treebook",
-      :access_key_id => "AKIAJKYPJW24MP7S4MWQ",
-      :secret_access_key => "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"
+      :bucket => "",
+      :access_key_id => "",
+      :secret_access_key => ""
     }
   }
 end
